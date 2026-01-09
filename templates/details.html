@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>User Details Found</h2>
+
+{% if user %}
+    <div style="border: 1px solid #ccc; padding: 20px; line-height: 1.6;">
+        <p><strong>Database ID:</strong> {{ user.id }}</p>
+        <p><strong>Full Name:</strong> {{ user.full_name }}</p>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phone }}</p>
+        <p><strong>City:</strong> {{ user.city }}</p>
+        
+        <hr>
+        <a href="/delete/{{ user.id }}" style="color: red; font-weight: bold;">Delete This Record Permanently</a>
+        <br><br>
+        <a href="/all_users">← Back to List</a>
+    </div>
+{% else %}
+    <p style="color: red;">No user found with that ID.</p>
+    <a href="/all_users">Try Again</a>
+{% endif %}
+
+{% endblock %}

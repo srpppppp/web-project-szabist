@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<form action="/search" method="POST" style="margin-bottom: 20px;">
+    <input type="text" name="user_id" placeholder="Search by User ID..." required>
+    <button type="submit">Search</button>
+</form>
+
+<table border="1" style="width:100%; border-collapse: collapse;">
+    <thead>
+        <tr style="background-color: #eee;">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.full_name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td><a href="/delete/{{ user.id }}" style="color: red;">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
